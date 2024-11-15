@@ -17,7 +17,7 @@ This repository contains the code and projects I worked on while completing Harv
 ## 🏆 Certificate of Completion  
 I successfully completed the CS50AI course! Check out my certificate below:  
 
-![CS50AI Certificate](AI/CERTIFICATE/CS50AI.png)  
+![CS50AI Certificate](https://github.com/Raufjatoi/AI/blob/main/CERTIFICATE/CS50AI.png)  
 
 ## 🌟 About This Repository  
 This repository is a testament to my journey through the fascinating world of Artificial Intelligence. Feel free to explore the code, suggest improvements, or use it as inspiration for your own learning!  
