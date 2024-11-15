@@ -24,5 +24,5 @@ This repository is a testament to my journey through the fascinating world of Ar
 
 ## 🚀 Let's Connect  
 If you have any questions or want to discuss AI, feel free to reach out:  
-📧 Email >> raufpokemon00@gmail.com
-💼 LinkedIn >>  https://www.linkedin.com/in/abdul-rauf-aa44892aa/  
+📧 Email >> raufpokemon00@gmail.com          
+💼 LinkedIn >> https://www.linkedin.com/in/abdul-rauf-aa44892aa/  
