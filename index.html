@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rauf: AI and ML</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+    }
+    .main-heading {
+      color: rgb(150, 147, 147); 
+    }
+    .navbar {
+      background-color: black; 
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color:rgb(150, 147, 147); 
+    }
+    .navbar-nav .nav-link {
+      color:rgb(150, 147, 147); 
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    footer {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+      padding: 15px 0;
+    }
+    pre {
+      background-color: #333;
+      color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="https://rauf-psi.vercel.app/">Rauf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tutorialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Notes
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="tutorialDropdown">
+              <li><a class="dropdown-item" href="#">Search</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <header class="container text-center my-4">
+    <h1 class="main-heading">Rauf</h1>
+    <h5>AI and ML</h5>
+    <h2 class="main-heading">Search in AI</h2>
+    <p>Search problems involve finding a solution from an initial state to a goal state. For instance, a navigator app finds the best route from your current location to your destination. In AI, these problems are modeled using agents (entities that perceive and act on their environment), states (configurations of the agent), and actions (choices made in each state). The state space consists of all possible states the agent can reach from its initial state, and the goal test determines when the agent has reached the goal.</p>
+  </header>
+
+  <!-- content -->
+  <div class="container content">
+    <section id="tutorial1" class="mb-5">
+      <h2 class="main-heading">Key Concepts in Search:</h2>
+      <ul>
+        <li> <strong>Initial State: </strong> The starting point of the agent (e.g., current location in navigation).</li>
+        <li> <strong>Actions: </strong> The choices the agent can make (e.g., moving to a neighboring state).</li>
+        <li> <strong>Transition Model: </strong> Describes how actions result in new states.</li>
+        <li> <strong>State Space: </strong> All possible states the agent can reach.</li>
+        <li> <strong>Path Cost: </strong> The cost (e.g., time, distance) of a path between states.</li>
+      </ul>
+    </section>
+
+    <section id="tutorial2" class="mb-5">
+      <h2 class="main-heading">Solving Search Problems</h2>
+      <p>To solve search problems, we use the frontier, a mechanism to manage the nodes in a search process. Nodes store information about the state, the parent node, the action taken to reach the node, and the path cost. The algorithm explores nodes by following specific strategies, such as Depth-First Search (DFS) or Breadth-First Search (BFS).</p>
+    </section>
+
+    <section id="tutorial3" class="mb-5">
+      <h2 class="main-heading">Search Algorithms</h2>
+      <h4>Depth-First Search (DFS):</h4>
+      <ul>
+        <li><strong>Data Structure:</strong> Stack (LIFO).</li>
+        <li><strong>Strategy:</strong> Explore as deeply as possible along one branch before backtracking.</li>
+        <li><strong>Pros:</strong> Fast if the solution is found early in the right branch.</li>
+        <li><strong>Cons:</strong> Can be inefficient and may not find the optimal solution.</li>
+      </ul>
+      <pre><code>def remove(self):
+    if self.empty():
+        raise Exception("empty frontier")
+    else:
+        node = self.frontier[-1]
+        self.frontier = self.frontier[:-1]
+        return node</code></pre>
+
+      <h4>Breadth-First Search (BFS):</h4>
+      <ul>
+        <li><strong>Data Structure:</strong> Queue (FIFO).</li>
+        <li><strong>Strategy:</strong> Explore all directions at the same depth before moving deeper.</li>
+        <li><strong>Pros:</strong> Guaranteed to find the optimal solution.</li>
+        <li><strong>Cons:</strong> Can be slower than DFS.</li>
+      </ul>
+      <pre><code>def remove(self):
+    if self.empty():
+        raise Exception("empty frontier")
+    else:
+        node = self.frontier[0]
+        self.frontier = self.frontier[1:]
+        return node</code></pre>
+
+      <h4>Greedy Best-First Search:</h4>
+      <ul>
+        <li><strong>Data Structure:</strong> Priority Queue.</li>
+        <li><strong>Strategy:</strong> Expand the node closest to the goal, based on a heuristic.</li>
+        <li><strong>Pros:</strong> Efficient when a good heuristic is available.</li>
+        <li><strong>Cons:</strong> May not find the optimal solution.</li>
+      </ul>
+
+      <h4>A* Search:</h4>
+      <ul>
+        <li><strong>Data Structure:</strong> Priority Queue.</li>
+        <li><strong>Strategy:</strong> Combines the cost so far (g(n)) and the estimated cost to the goal (h(n)).</li>
+        <li><strong>Pros:</strong> More optimal than Greedy BFS, as it considers both path cost and heuristic.</li>
+        <li><strong>Cons:</strong> Relies on the quality of the heuristic.</li>
+      </ul>
+    </section>
+
+    <section id="tutorial4" class="mb-5">
+      <h2 class="main-heading">Heuristics: Manhattan Distance</h2>
+      <p>A common heuristic used in search algorithms, especially in grid-based pathfinding, is the Manhattan Distance. It measures the number of steps required to move from one point to another, ignoring obstacles and calculating based on vertical and horizontal movement.</p>
+      <pre><code>def manhattan_distance(start, goal):
+    return abs(start[0] - goal[0]) + abs(start[1] - goal[1])</code></pre>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>21 Dec 2024 Rauf AI and ML</p>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
