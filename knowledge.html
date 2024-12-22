@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rauf: AI and ML</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+    }
+    .main-heading {
+      color: rgb(150, 147, 147); 
+    }
+    .navbar {
+      background-color: black; 
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color: rgb(150, 147, 147); 
+    }
+    .navbar-nav .nav-link {
+      color: rgb(150, 147, 147); 
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    footer {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+      padding: 15px 0;
+    }
+    pre {
+      background-color: #333;
+      color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="https://rauf-psi.vercel.app/">Rauf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tutorialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Notes
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="tutorialDropdown">
+              <li><a class="dropdown-item" href="index.html">Search</a></li>
+              <li><a class="dropdown-item" href="#">Knowledge</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="container text-center my-4">
+    <h1 class="main-heading">Rauf</h1>
+    <h5>AI and ML</h5>
+    <h2 class="main-heading">Knowledge in AI</h2>
+    <p>Knowledge in AI refers to the structured information that enables AI systems to make logical decisions and solve specific problems.</p>
+  </header>
+
+  <!-- Content -->
+  <div class="container content">
+    <!-- Knowledge-Based Agents -->
+    <section id="tutorial1" class="mb-5">
+      <h2 class="main-heading">Knowledge-Based Agents</h2>
+      <p>Knowledge-based agents reason by operating on internal representations of knowledge, such as facts and logic.</p>
+      <ul>
+        <li><strong>If the temperature is low, Rauf avoids a shower.</strong></li>
+        <li>Rauf did not shower today.</li>
+        <li>Today was particularly cold.</li>
+      </ul>
+      <ul>
+        <li style="color: blue;"><strong>Rauf didn’t shower today.</strong></li>
+        <li style="color: blue;"><strong>Today was not less cold.</strong></li>
+      </ul>
+      <p>Using facts and logic, knowledge-based agents can infer new knowledge, as demonstrated by the above example.</p>
+    </section>
+
+    <!-- Propositional Logic -->
+    <section id="propositional-logic" class="mb-5">
+      <h2 class="main-heading">Propositional Logic</h2>
+      <p>Propositional logic involves statements that can either be true or false, forming the foundation for logical reasoning.</p>
+      <pre>
+if today_is_cold and no_shower_taken:
+    print("Rauf avoided the shower.")
+      </pre>
+    </section>
+
+    <!-- Entailment -->
+    <section id="entailment" class="mb-5">
+      <h2 class="main-heading">Entailment</h2>
+      <p>Entailment in logic means that if certain facts are true, they logically imply other facts.</p>
+      <pre>
+if "Today is cold" entails "Rauf avoids the shower":
+    print("Entailment holds true.")
+      </pre>
+    </section>
+
+    <!-- Inference -->
+    <section id="inference" class="mb-5">
+      <h2 class="main-heading">Inference</h2>
+      <p>Inference is the process of deriving logical conclusions from given facts or premises.</p>
+      <pre>
+facts = ["Today is cold", "Rauf avoids shower"]
+if "Rauf avoided the shower" in facts:
+    print("Inference successful.")
+      </pre>
+    </section>
+
+    <!-- Model Checking -->
+    <section id="model-checking" class="mb-5">
+      <h2 class="main-heading">Model Checking</h2>
+      <p>Model checking is verifying if a logical statement holds true under a given set of conditions.</p>
+      <pre>
+conditions = {"cold": True, "shower": False}
+if conditions["cold"] and not conditions["shower"]:
+    print("Model satisfies conditions.")
+      </pre>
+    </section>
+
+    <!-- Resolution -->
+    <section id="resolution" class="mb-5">
+      <h2 class="main-heading">Resolution</h2>
+      <p>Resolution is a rule of inference used for automated reasoning and proof.</p>
+      <pre>
+if "cold" and "not shower":
+    print("Resolution proves Rauf avoided the shower.")
+      </pre>
+    </section>
+
+    <!-- First Order Logic -->
+    <section id="first-order-logic" class="mb-5">
+      <h2 class="main-heading">First Order Logic</h2>
+      <p>First-order logic extends propositional logic by including quantifiers like "for all" or "there exists."</p>
+      <pre>
+forall x (Cold(x) -> AvoidShower(x))
+if Cold("today"):
+    print("Rauf avoids the shower.")
+      </pre>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>22 Dec 2024 Rauf AI and ML</p>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
