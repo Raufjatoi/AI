@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rauf: AI and ML</title>
+  <link rel="icon" href="img.jpeg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #comment {
+      color: lightslategray;
+    }
+    body {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+    }
+    .main-heading {
+      color: rgb(150, 147, 147); 
+    }
+    .navbar {
+      background-color: black; 
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color:rgb(150, 147, 147); 
+    }
+    .navbar-nav .nav-link {
+      color:rgb(150, 147, 147); 
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    footer {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+      padding: 15px 0;
+    }
+    pre {
+      background-color: #333;
+      color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="https://rauf-psi.vercel.app/">Rauf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tutorialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Notes
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="tutorialDropdown">
+              <li><a class="dropdown-item" href="index.html">Search</a></li>
+              <li><a class="dropdown-item" href="knowledge.html">Knowledge</a></li>
+              <li><a class="dropdown-item" href="#">Uncertainty</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <header class="container text-center my-4">
+    <h1 class="main-heading">Rauf</h1>
+    <h5>AI and ML</h5>
+    <h2 class="main-heading">Uncertainty in AI</h2>
+    <p>Uncertainty in AI refers to the condition where AI systems face incomplete or ambiguous information and must make decisions despite limited understanding of the situation.</p>
+  </header>
+
+  <!-- content -->
+  <div class="container content">
+    <section id="tutorial1" class="mb-5">
+      <h2 class="main-heading">Probability</h2>
+      <p>Probability measures the likelihood of an event occurring. For example, if Rauf wants to play table tennis today, his decision might depend on whether Farhan gives him a ride to the university's sports complex. If Farhan can’t, Rauf has a 50% chance of finding someone else to help. Otherwise, he cannot play as Adeel also needs to coordinate with Rauf. Here’s the probability formula:</p>
+      <pre>Probability = (Number of favorable outcomes) / (Total number of outcomes)</pre>
+      <p>Example Python Code:</p>
+      <pre>
+import random
+
+probability_of_playing = 0.5  # 50% chance
+if random.random() < probability_of_playing:
+    print("Rauf will play table tennis.")
+else:
+    print("Rauf won’t play table tennis.")
+      </pre>
+    </section>
+
+    <section id="tutorial2" class="mb-5">
+      <h2 class="main-heading">Conditional Probability</h2>
+      <p>Conditional probability considers the probability of an event occurring given that another event has already occurred. Using the previous example, the probability that Rauf plays table tennis given Farhan gives him a ride is:</p>
+      <pre>P(A|B) = P(A ∩ B) / P(B)</pre>
+      <p>Here’s a table for better understanding:</p>
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Probability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Farhan gives a ride</td>
+            <td>0.7</td>
+          </tr>
+          <tr>
+            <td>Rauf finds another option</td>
+            <td>0.3</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="tutorial3" class="mb-5">
+      <h2 class="main-heading">Random Variables</h2>
+      <p>A random variable represents numerical outcomes of a random phenomenon. In this example, let X = 1 if Rauf plays table tennis, and X = 0 otherwise.</p>
+    </section>
+
+    <section id="tutorial4" class="mb-5">
+      <h2 class="main-heading">Independence</h2>
+      <p>Two events are independent if the occurrence of one does not affect the occurrence of the other. For instance, Farhan giving a ride and the weather being good might be independent.</p>
+    </section>
+
+    <section id="tutorial5" class="mb-5">
+      <h2 class="main-heading">Bayes’ Rule</h2>
+      <p>Bayes’ Rule allows us to update probabilities based on new evidence. The formula is:</p>
+      <pre>P(A|B) = [P(B|A) * P(A)] / P(B)</pre>
+    </section>
+
+    <section id="tutorial6" class="mb-5">
+      <h2 class="main-heading">Joint Probability</h2>
+      <p>Joint probability is the probability of two events occurring together. Using our example, it’s the probability that Farhan gives a ride and Rauf plays:</p>
+      <pre>P(A ∩ B) = P(A) * P(B|A)</pre>
+      <p>Example Table:</p>
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th>Farhan Gives Ride</th>
+            <th>Rauf Plays</th>
+            <th>Joint Probability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>0.35</td>
+          </tr>
+          <tr>
+            <td>No</td>
+            <td>No</td>
+            <td>0.15</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="tutorial7" class="mb-5">
+      <h2 class="main-heading">Bayesian Networks</h2>
+      <p>Bayesian Networks represent probabilistic relationships among variables. Here’s a sample diagram:</p>
+      <img src="baysian_network.png" alt="Bayesian Network">
+    </section>
+
+    <section id="tutorial8" class="mb-5">
+      <h2 class="main-heading">Sampling</h2>
+      <p>Sampling involves selecting a subset of data from a larger dataset to estimate population characteristics. Techniques include random sampling, stratified sampling, etc.</p>
+    </section>
+
+    <section id="tutorial9" class="mb-5">
+      <h2 class="main-heading">Markov Models and Hidden Markov Models</h2>
+      <p>Markov Models describe systems where the next state depends only on the current state. Hidden Markov Models extend this by having hidden states. Example Python Code:</p>
+      <pre>
+from hmmlearn import hmm
+
+model = hmm.GaussianHMM(n_components=2)
+data = [[0.2], [0.8], [0.4]]
+model.fit(data)
+print(model.predict(data))
+      </pre>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>23 Dec 2024 Rauf AI and ML</p>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
