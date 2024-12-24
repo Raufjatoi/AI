@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rauf: AI and ML</title>
+  <link rel="icon" href="img.jpeg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+    }
+    .main-heading {
+      color: rgb(150, 147, 147); 
+    }
+    .navbar {
+      background-color: black; 
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color:rgb(150, 147, 147); 
+    }
+    .navbar-nav .nav-link {
+      color:rgb(150, 147, 147); 
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    footer {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+      padding: 15px 0;
+    }
+    pre {
+      background-color: #333;
+      color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="https://rauf-psi.vercel.app/">Rauf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tutorialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Notes
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="tutorialDropdown">
+              <li><a class="dropdown-item" href="index.html">Search</a></li>
+              <li><a class="dropdown-item" href="knowledge.html">Knowledge</a></li>
+              <li><a class="dropdown-item" href="uncertanity.html">Uncertainty</a></li>
+              <li><a class="dropdown-item" href="#">Optimization</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <header class="container text-center my-4">
+    <h1 class="main-heading">Rauf</h1>
+    <h5>AI and ML</h5>
+    <h2 class="main-heading">Optimization in AI</h2>
+    <p>Optimization in AI means improving solutions to achieve better performance. In this Web Note, I will discuss topics such as Local Search, Hill Climbing, Simulated Annealing, Linear Programming, Constraint Satisfaction, and Backtracking Search one by one. Let's start 😊</p>
+  </header>
+
+  <!-- content -->
+  <div class="container content">
+    <section id="tutorial1" class="mb-5">
+      <h2 class="main-heading">Local Search</h2>
+      <p>Local search is an optimization technique used to find solutions by exploring neighboring states. For example, imagine Rauf wants to visit Adil's home to borrow a bike. If Rauf tries different paths starting from his current location, evaluating each path's distance until finding the shortest one, this is a simple form of local search.</p>
+      <pre><code># Example of a local search in Python
+def local_search(paths):
+    best_path = None
+    shortest_distance = float('inf')
+    for path, distance in paths.items():
+        if distance < shortest_distance:
+            shortest_distance = distance
+            best_path = path
+    return best_path
+
+paths = {'Path A': 10, 'Path B': 15, 'Path C': 8}
+print("Best path:", local_search(paths))</code></pre>
+    </section>
+
+    <section id="tutorial2" class="mb-5">
+      <h2 class="main-heading">Hill Climbing</h2>
+      <p>Before understanding hill climbing, we need to know about global maximum, global minimum, local maximum, and local minimum. Imagine Rauf has many routes to reach Adil's home, but he wants the quickest one. A global minimum is the quickest route overall, while a local minimum is a quick route in a specific area but not the best overall. Similarly, a global maximum could represent the slowest overall route, and a local maximum a slower route in a smaller region. Hill climbing evaluates neighboring solutions to move toward the best (highest or lowest) solution. However, it may get stuck in a local maximum or minimum.</p>    <pre><code># Hill Climbing Example in Python
+def hill_climbing(function, start, step_size):
+    current = start
+    while True:
+        neighbors = [current + step_size, current - step_size]
+        next_step = max(neighbors, key=function)
+        if function(next_step) <= function(current):
+            break
+        current = next_step
+    return current
+
+# Example function to maximize
+def f(x):
+    return -(x - 3) ** 2 + 9
+
+print("Best solution:", hill_climbing(f, start=0, step_size=1))</code></pre>
+    </section>
+
+    <section id="tutorial3" class="mb-5">
+      <h2 class="main-heading">Simulated Annealing</h2>
+      <p>Simulated annealing overcomes the limitations of hill climbing by sometimes allowing moves to worse solutions to escape local optima and find the global minimum. This is similar to cooling metals slowly to find their most stable state.</p>
+      <pre><code># Simulated Annealing Example in Python
+import math
+import random
+
+def simulated_annealing(function, start, temp, cooling_rate):
+    current = start
+    best = current
+    while temp > 1:
+        neighbor = current + random.uniform(-1, 1)
+        delta_e = function(neighbor) - function(current)
+        if delta_e > 0 or math.exp(delta_e / temp) > random.random():
+            current = neighbor
+        if function(current) > function(best):
+            best = current
+        temp *= cooling_rate
+    return best
+
+# Example function to maximize
+def f(x):
+    return -(x - 3) ** 2 + 9
+
+print("Best solution:", simulated_annealing(f, start=0, temp=100, cooling_rate=0.95))</code></pre>
+    </section>
+
+    <section id="tutorial4" class="mb-5">
+      <h2 class="main-heading">Linear Programming</h2>
+      <p>Linear programming is used to optimize a linear objective function subject to linear constraints. For example, if Rauf wants to buy ingredients for a recipe while minimizing cost and staying within a budget, linear programming can help.</p>
+      <pre><code># Linear Programming Example in Python
+from scipy.optimize import linprog
+
+# Minimize: c1 * x1 + c2 * x2
+c = [3, 2]
+A = [[1, 1], [2, 1]]
+b = [8, 10]
+result = linprog(c, A_ub=A, b_ub=b, method='highs')
+print("Optimal solution:", result.x)</code></pre>
+    </section>
+
+    <section id="tutorial5" class="mb-5">
+      <h2 class="main-heading">Constraint Satisfaction and Backtracking Search</h2>
+      <p>Constraint satisfaction involves solving problems with constraints, such as Sudoku. Backtracking search systematically explores possible solutions by backtracking when constraints are violated.</p>
+      <pre><code># Backtracking Example for Sudoku Solver
+
+def is_safe(board, row, col, num):
+    for x in range(9):
+        if board[row][x] == num or board[x][col] == num or board[row - row % 3 + x // 3][col - col % 3 + x % 3] == num:
+            return False
+    return True
+
+def solve_sudoku(board):
+    for row in range(9):
+        for col in range(9):
+            if board[row][col] == 0:
+                for num in range(1, 10):
+                    if is_safe(board, row, col, num):
+                        board[row][col] = num
+                        if solve_sudoku(board):
+                            return True
+                        board[row][col] = 0
+                return False
+    return True
+
+# Example Sudoku board
+board = [
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+]
+
+solve_sudoku(board)
+print("Solved board:", board)</code></pre>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>24 Dec 2024 Rauf AI and ML</p>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
