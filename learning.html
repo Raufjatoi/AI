@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rauf: AI and ML</title>
+  <link rel="icon" href="img.jpeg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+    }
+    .main-heading {
+      color: rgb(150, 147, 147); 
+    }
+    .navbar {
+      background-color: black; 
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color:rgb(150, 147, 147); 
+    }
+    .navbar-nav .nav-link {
+      color:rgb(150, 147, 147); 
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    footer {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+      padding: 15px 0;
+    }
+    pre {
+      background-color: #333;
+      color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="https://rauf-psi.vercel.app/">Rauf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tutorialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Notes
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="tutorialDropdown">
+              <li><a class="dropdown-item" href="index.html">Search</a></li>
+              <li><a class="dropdown-item" href="knowledge.html">Knowledge</a></li>
+              <li><a class="dropdown-item" href="uncertanity.html">Uncertainty</a></li>
+              <li><a class="dropdown-item" href="optimization.html">Optimization</a></li>
+              <li><a class="dropdown-item" href="#">Machine Learning</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <header class="container text-center my-4">
+    <h1 class="main-heading">Rauf</h1>
+    <h5>AI and ML</h5>
+    <h2 class="main-heading">Machine Learning</h2>
+    <p>Machine learning involves teaching machines to learn patterns and make decisions based on data. It is categorized into several types. In this web note, I will discuss key topics starting with Supervised Learning, including Nearest-Neighbor Classification, Perceptron Learning, Support Vector Machines, Regression, Loss Functions, Overfitting, Regularization, Reinforcement Learning, Markov Decision Processes, Q-Learning, and Unsupervised Learning like k-means Clustering. Let's dive in!</p>
+  </header>
+  
+  <div class="container content">
+    <section id="tutorial1" class="mb-5">
+      <h2 class="main-heading">Supervised Learning</h2>
+      <p>Supervised learning involves providing the machine with labeled data. For example, we train it with images of dogs and cats labeled as "dog" or "cat." Supervised learning is further divided into Classification and Regression:</p>
+  
+      <ul>
+        <li>
+          <h3>Classification</h3>
+          <p>Classification assigns input data to predefined categories or classes. For example, identifying whether an image is of a dog, cat, or parrot corresponds to classes 1, 2, and 3 respectively.</p>
+          <h4>Popular Algorithms: Nearest-Neighbor, Perceptron Learning, and Support Vector Machines</h4>
+          <pre><code>
+  # Example: Classification using Support Vector Machines
+  from sklearn.datasets import load_iris
+  from sklearn.model_selection import train_test_split
+  from sklearn.svm import SVC
+  from sklearn.metrics import accuracy_score
+  
+  # Load dataset
+  iris = load_iris()
+  X, y = iris.data, iris.target
+  
+  # Split data
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+  
+  # Train SVM model
+  model = SVC(kernel='linear')
+  model.fit(X_train, y_train)
+  
+  # Predict and evaluate
+  predictions = model.predict(X_test)
+  print("Accuracy:", accuracy_score(y_test, predictions))
+          </code></pre>
+        </li>
+  
+        <li>
+          <h3>Regression</h3>
+          <p>Regression predicts continuous values. For example, given features like the size of a house, we predict its price.</p>
+          <h4>Popular Algorithms: Linear Regression, Support Vector Machines and others </h4>
+          <pre><code>
+  # Example: Regression using Linear Regression
+  from sklearn.datasets import make_regression
+  from sklearn.linear_model import LinearRegression
+  from sklearn.model_selection import train_test_split
+  from sklearn.metrics import mean_squared_error
+  
+  # Generate synthetic data
+  X, y = make_regression(n_samples=100, n_features=1, noise=10, random_state=42)
+  
+  # Split data
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+  
+  # Train model
+  model = LinearRegression()
+  model.fit(X_train, y_train)
+  
+  # Predict and evaluate
+  predictions = model.predict(X_test)
+  print("Mean Squared Error:", mean_squared_error(y_test, predictions))
+          </code></pre>
+        </li>
+      </ul>
+    </section>
+  
+    <section>
+        
+      <h2 class="main-heading">Quick Topics: Loss Functions, Overfitting, Regularization</h2>
+      <ul>
+      <li><h3>Loss Function</h3> </li>
+      <p>A loss function measures how well the model's predictions match the actual outcomes. Lower loss means better performance.</p>
+  
+      <li><h3>Overfitting</h3></li>
+      <p>Overfitting occurs when a model performs well on training data but poorly on unseen data. To prevent this, we split the data into training and testing sets and use techniques like cross-validation.</p>
+  
+      <li><h3>Regularization</h3></li>
+      <p>Regularization techniques, such as L1 and L2, help reduce overfitting by penalizing overly complex models.</p>
+  
+      <pre><code>
+  # Example: Regularization with Ridge Regression
+  from sklearn.linear_model import Ridge
+  
+  # Train Ridge Regression model
+  ridge_model = Ridge(alpha=1.0)
+  ridge_model.fit(X_train, y_train)
+  
+  # Predict and evaluate
+  ridge_predictions = ridge_model.predict(X_test)
+  print("Ridge Mean Squared Error:", mean_squared_error(y_test, ridge_predictions))
+      </code></pre>
+    </ul> 
+      <section id="tutorial2" class="mb-5">
+        <h2 class="main-heading">Reinforcement Learning</h2>
+        <p>Reinforcement Learning (RL) is another type of machine learning where an agent learns to make decisions by interacting with its environment. Unlike supervised learning, RL does not require labeled data. Instead, the agent explores the environment and learns by trial and error. It receives feedback in the form of rewards for correct actions and penalties for incorrect ones, which helps it optimize its decision-making over time. For example, teaching an agent to solve a maze involves letting it attempt different paths. The agent gradually learns the best strategy by trying, failing, and improving based on the received feedback.</p>
+        <ul>
+        <li><h3>Markov Decision Processes (MDPs)</h3> </li>
+        <p>A Markov Decision Process (MDP) is a mathematical framework used in RL to model decision-making in situations where outcomes are partly random and partly under the control of the agent. MDPs consist of states, actions, transition probabilities, rewards, and policies. The agent uses these elements to determine the best action for each state to maximize its cumulative reward.</p>
+        <pre><code>
+      # Example: Markov Decision Process with Python
+      import numpy as np
+      import random
+      
+      # Define states, actions, and rewards
+      states = ["A", "B", "C", "D"]  # Example states
+      actions = ["left", "right"]    # Example actions
+      rewards = {
+          ("A", "left"): -1, ("A", "right"): 0,
+          ("B", "left"): 1, ("B", "right"): 2,
+          ("C", "left"): 2, ("C", "right"): -1,
+          ("D", "left"): 0, ("D", "right"): 1,
+      }
+      
+      # Define transition probabilities
+      transitions = {
+          ("A", "left"): "B", ("A", "right"): "C",
+          ("B", "left"): "A", ("B", "right"): "D",
+          ("C", "left"): "D", ("C", "right"): "A",
+          ("D", "left"): "C", ("D", "right"): "B",
+      }
+      
+      # Example agent navigating through the states
+      state = "A"
+      for _ in range(10):  # Run for 10 steps
+          action = random.choice(actions)
+          next_state = transitions[(state, action)]
+          reward = rewards[(state, action)]
+          print(f"State: {state}, Action: {action}, Next State: {next_state}, Reward: {reward}")
+          state = next_state
+        </code></pre>
+      
+        <li><h3>Q-Learning</h3></li>
+        <p>Q-Learning is a model-free RL algorithm that helps agents learn optimal policies by maintaining a Q-table. The Q-table stores the expected rewards for each state-action pair. Over time, the agent updates the Q-values based on its experiences to learn the best actions for maximizing cumulative rewards.</p>
+        <pre><code>
+      # Example: Q-Learning Implementation in Python
+      import numpy as np
+      
+      # Initialize parameters
+      states = ["A", "B", "C", "D"]
+      actions = ["left", "right"]
+      q_table = np.zeros((len(states), len(actions)))
+      learning_rate = 0.1
+      discount_factor = 0.9
+      episodes = 1000
+      epsilon = 0.1  # Exploration rate
+      
+      # Mapping for state and action indices
+      state_indices = {state: idx for idx, state in enumerate(states)}
+      action_indices = {action: idx for idx, action in enumerate(actions)}
+      
+      # Rewards and transitions
+      rewards = {
+          ("A", "left"): -1, ("A", "right"): 0,
+          ("B", "left"): 1, ("B", "right"): 2,
+          ("C", "left"): 2, ("C", "right"): -1,
+          ("D", "left"): 0, ("D", "right"): 1,
+      }
+      transitions = {
+          ("A", "left"): "B", ("A", "right"): "C",
+          ("B", "left"): "A", ("B", "right"): "D",
+          ("C", "left"): "D", ("C", "right"): "A",
+          ("D", "left"): "C", ("D", "right"): "B",
+      }
+      
+      # Q-Learning algorithm
+      for _ in range(episodes):
+          state = random.choice(states)
+          while True:
+              if random.uniform(0, 1) < epsilon:  # Explore
+                  action = random.choice(actions)
+              else:  # Exploit
+                  action = actions[np.argmax(q_table[state_indices[state]])]
+              
+              next_state = transitions[(state, action)]
+              reward = rewards[(state, action)]
+              q_value = q_table[state_indices[state], action_indices[action]]
+              
+              # Update Q-value
+              max_next_q = np.max(q_table[state_indices[next_state]])
+              q_table[state_indices[state], action_indices[action]] = q_value + learning_rate * (reward + discount_factor * max_next_q - q_value)
+              
+              if next_state == "D":  # End condition for simplicity
+                  break
+              state = next_state
+      
+      # Display final Q-table
+      print("Q-Table after training:")
+      print(q_table)
+    </ul>
+        </code></pre>
+      </section>
+      
+      <section id="tutorial3" class="mb-5">
+        <h2 class="main-heading">Unsupervised Learning</h2>
+        <p>Unsupervised learning is the third major type of machine learning, alongside supervised and reinforcement learning. In unsupervised learning, we only have features (data points) without any labels. The goal is to discover patterns, groupings, or structures within the data. This often involves clustering data into groups or reducing dimensionality for better understanding and visualization.</p>
+        <ul>
+          <li><h3>K-Means Clustering</h3></li>
+          <p>K-Means clustering is an unsupervised machine learning algorithm. It works by partitioning data into 'k' clusters, where each cluster is defined by its mean. The algorithm assigns data points to the nearest cluster center, recalculates the cluster centers, and iterates until the cluster assignments stabilize.</p>
+          <pre><code>
+      # Example: K-Means Clustering in Python
+      from sklearn.cluster import KMeans
+      import numpy as np
+      import matplotlib.pyplot as plt
+      
+      # Sample data
+      data = np.array([
+          [1, 2], [1, 4], [1, 0],
+          [4, 2], [4, 4], [4, 0]
+      ])
+      
+      # Applying K-Means with 2 clusters
+      kmeans = KMeans(n_clusters=2, random_state=0).fit(data)
+      
+      # Cluster centers and labels
+      centers = kmeans.cluster_centers_
+      labels = kmeans.labels_
+      
+      # Visualizing the clusters
+      for i, label in enumerate(labels):
+          plt.scatter(data[i][0], data[i][1], label=f"Point {i} (Cluster {label})")
+          
+      plt.scatter(centers[:, 0], centers[:, 1], c='red', marker='x', label="Centers")
+      plt.title("K-Means Clustering Example")
+      plt.xlabel("Feature 1")
+      plt.ylabel("Feature 2")
+      plt.legend()
+      plt.show()
+          </code></pre>
+      
+          <li><h3>Principal Component Analysis (PCA)</h3></li>
+          <p>Principal Component Analysis (PCA) is an unsupervised learning algorithm used for dimensionality reduction. It transforms data into a set of principal components, which are linear combinations of the original features. PCA helps in visualizing high-dimensional data and reducing computational complexity.</p>
+          <pre><code>
+      # Example: PCA in Python
+      from sklearn.decomposition import PCA
+      import numpy as np
+      
+      # Sample data with 3 features
+      data = np.array([
+          [2.5, 2.4, 3.2],
+          [0.5, 0.7, 1.8],
+          [2.2, 2.9, 3.6],
+          [1.9, 2.2, 3.0],
+          [3.1, 3.0, 4.0],
+          [2.3, 2.7, 3.8]
+      ])
+      
+      # Applying PCA to reduce to 2 dimensions
+      pca = PCA(n_components=2)
+      reduced_data = pca.fit_transform(data)
+      
+      # Displaying reduced dimensions
+      print("Original Data:")
+      print(data)
+      print("\nReduced Data (2 Dimensions):")
+      print(reduced_data)
+          </code></pre>
+        </ul>
+      </section>
+      
+  <footer class="text-center">
+    <p>25 Dec 2024 Rauf AI and ML</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
