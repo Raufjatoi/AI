@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rauf: AI and ML</title>
+  <link rel="icon" href="img.jpeg" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+    }
+    .main-heading {
+      color: rgb(150, 147, 147); 
+    }
+    .navbar {
+      background-color: black; 
+    }
+    .navbar-brand {
+      font-weight: bold;
+      color:rgb(150, 147, 147); 
+    }
+    .navbar-nav .nav-link {
+      color:rgb(150, 147, 147); 
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    footer {
+      background-color: rgb(33, 32, 32); 
+      color: white;
+      padding: 15px 0;
+    }
+    pre {
+      background-color: #333;
+      color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="https://rauf-psi.vercel.app/">Rauf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tutorialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Notes
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="tutorialDropdown">
+              <li><a class="dropdown-item" href="index.html">Search</a></li>
+              <li><a class="dropdown-item" href="knowledge.html">Knowledge</a></li>
+              <li><a class="dropdown-item" href="uncertanity.html">Uncertainty</a></li>
+              <li><a class="dropdown-item" href="optimization.html">Optimization</a></li>
+              <li><a class="dropdown-item" href="learning.html">Machine Learning</a></li>
+              <li><a class="dropdown-item" href="#">Neural Net</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <header class="container text-center my-4">
+    <h1 class="main-heading">Rauf</h1>
+    <h5>AI and ML</h5>
+    <h2 class="main-heading">Neural Net</h2>
+    <p>
+        Neural networks are a subset of machine learning, utilizing artificial neural networks inspired by human brains. 
+        Often called deep learning, neural networks excel in identifying patterns and making predictions. 
+        In this webnote, I will cover topics such as Artificial Neural Networks, Activation Functions, Gradient Descent, 
+        Backpropagation, Overfitting, TensorFlow, Image Convolution, Convolutional Neural Networks, and Recurrent Neural Networks, one by one. Let's start 😊
+    </p>
+</header>
+
+<div class="container content">
+    <section id="tutorial1" class="mb-5">
+        <h2 class="main-heading">Artificial Neural Networks</h2>
+        <p>
+            Artificial Neural Networks (ANNs) are inspired by biological neurons. They consist of layers of neurons that work together to learn patterns from data. 
+        </p>
+        <pre><code>
+# A simple implementation of a single neuron without libraries
+inputs = [1.0, 2.0, 3.0]  # Input features
+weights = [0.2, 0.8, -0.5]  # Weights for each input
+bias = 2.0  # Bias term
+
+# Calculate the output of the neuron
+def simple_neuron(inputs, weights, bias):
+    output = sum(i * w for i, w in zip(inputs, weights)) + bias
+    return output
+
+output = simple_neuron(inputs, weights, bias)
+print("Output of the single neuron:", output)
+        </code></pre>
+        <p>
+            In the code above, you can see a single neuron implemented with weights, an activation function, and a bias. Let’s break down these terms:
+        </p>
+        <ul>
+            <li><strong>Weight:</strong> Determines the influence of each input on the output.</li>
+            <li><strong>Activation Function:</strong> Adds non-linearity to the model, allowing it to learn complex patterns.</li>
+            <li><strong>Bias:</strong> Allows the model to shift the output, making it more flexible in fitting data.</li>
+            <li><strong>Overfitting:</strong> When a model performs well on training data but poorly on unseen data due to excessive complexity.</li>
+            <li><strong>Neural Net Formula:</strong> The formula is similar to linear regression but becomes non-linear due to the activation function: 
+                <code>Output = Activation(sum(weights * inputs) + bias)</code>
+            </li>
+        </ul>
+    </section>
+
+    <section id="tutorial2" class="mb-5">
+        <h2 class="main-heading">Gradient Descent</h2>
+        <p>
+            Gradient Descent is an optimization algorithm used to minimize the loss function by iteratively adjusting the model parameters.
+        </p>
+        <pre><code>
+# Gradient Descent example with a simple loss function
+import numpy as np
+
+# Loss function: f(x) = (x-3)^2
+# Gradient: f'(x) = 2*(x-3)
+def gradient_descent(learning_rate=0.1, iterations=100):
+    x = 0  # Initial value of x
+    for i in range(iterations):
+        gradient = 2 * (x - 3)
+        x = x - learning_rate * gradient
+    return x
+
+result = gradient_descent()
+print("Minimum value of x:", result)
+        </code></pre>
+        <p>
+            The code above shows a simple implementation of Gradient Descent. It iteratively updates the parameter <code>x</code> based on the gradient until it reaches the minimum value of the loss function.
+        </p>
+    </section>
+
+    <section id="tutorial3" class="mb-5">
+        <h2 class="main-heading">Backpropagation</h2>
+        <p>
+            Backpropagation is a method used to calculate gradients in a neural network. It adjusts weights by propagating the error backward from the output layer to the input layer.
+        </p>
+        <pre><code>
+# Simplified example of backpropagation
+import numpy as np
+
+# Inputs and target output
+inputs = np.array([1, 2, 3])
+weights = np.array([0.5, -0.1, 0.2])
+bias = 0.1
+
+target = 0.5
+learning_rate = 0.01
+
+# Forward pass
+def forward(inputs, weights, bias):
+    return np.dot(inputs, weights) + bias
+
+# Loss function
+def loss(output, target):
+    return (output - target) ** 2
+
+# Gradient calculation
+def backward(inputs, weights, bias, output, target):
+    error = output - target
+    d_weights = 2 * error * inputs
+    d_bias = 2 * error
+    return d_weights, d_bias
+
+# Training loop
+output = forward(inputs, weights, bias)
+l = loss(output, target)
+d_weights, d_bias = backward(inputs, weights, bias, output, target)
+weights -= learning_rate * d_weights
+bias -= learning_rate * d_bias
+
+print("Updated weights:", weights)
+print("Updated bias:", bias)
+        </code></pre>
+        <p>
+            This example demonstrates how backpropagation works to adjust weights and biases to minimize the error.
+        </p>
+    </section>
+
+    <section id="tutorial4" class="mb-5">
+        <h2 class="main-heading">TensorFlow</h2>
+        <p>
+            TensorFlow is a popular library for implementing deep learning models. It simplifies building, training, and deploying neural networks.
+        </p>
+        <pre><code>
+# TensorFlow example: A basic neural network
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense
+
+# Create a simple feedforward neural network
+model = Sequential([
+    Dense(8, activation='relu', input_shape=(3,)),  # Input layer with ReLU activation
+    Dense(1, activation='sigmoid')  # Output layer with sigmoid activation
+])
+
+# Compile the model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Dummy dataset
+inputs = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+targets = [0, 1, 0]
+
+# Train the model
+model.fit(inputs, targets, epochs=10, verbose=1)
+        </code></pre>
+        <p>
+            This code builds a simple neural network using TensorFlow and trains it on a dummy dataset. The network consists of an input layer and an output layer with sigmoid activation.
+        </p>
+    </section>
+    
+    <section id="tutorial5" class="mb-5">
+        <h2 class="main-heading">Convolutional Neural Network (CNN)</h2>
+        <p>A Convolutional Neural Network (CNN) is a type of neural network primarily used to process and analyze image data. It identifies patterns in images, such as edges, textures, and shapes, using operations like convolutions and pooling. Finally, it flattens these features and passes them through a fully connected neural network for predictions.</p>
+        
+        <ul>
+            <h2 class="main-heading">Parts of CNN</h2>
+    
+            <!-- Image Convolutional -->
+            <li><h3> Image Convolution: </h3></li>
+            <p>Convolution applies various filters to an image to extract features like edges, textures, or specific patterns. Below is an example of applying convolution using TensorFlow:</p>
+            <pre><code>
+    import tensorflow as tf
+    import numpy as np
+    from tensorflow.keras.layers import Conv2D
+    
+    # Sample image (random data for demonstration)
+    image = np.random.random((1, 28, 28, 1))  # 1 sample, 28x28 size, 1 channel
+    
+    # Define a convolutional layer
+    conv_layer = Conv2D(filters=3, kernel_size=(3, 3), activation='relu')
+    
+    # Apply convolution
+    output = conv_layer(image)
+    print("Shape after convolution:", output.shape)
+            </code></pre>
+    
+            <!-- Pooling -->
+            <li><h3>Pooling: </h3></li>
+            <p>Pooling reduces the size of the feature maps while retaining important information. Types include max pooling, average pooling, and min pooling. Here are examples:</p>
+            <pre><code>
+    from tensorflow.keras.layers import MaxPooling2D, AveragePooling2D
+    
+    # Define pooling layers
+    max_pool = MaxPooling2D(pool_size=(2, 2))
+    avg_pool = AveragePooling2D(pool_size=(2, 2))
+    
+    # Apply pooling to the output from the previous convolution layer
+    max_pooled_output = max_pool(output)
+    avg_pooled_output = avg_pool(output)
+    
+    print("Shape after max pooling:", max_pooled_output.shape)
+    print("Shape after average pooling:", avg_pooled_output.shape)
+            </code></pre>
+    
+            <!-- Flatten Layers -->
+            <li><h3> Flatten Layers: </h3></li>
+            <p>The flattening process converts the pooled feature maps into a single-dimensional vector that can be fed into the fully connected neural network. Here's an example:</p>
+            <pre><code>
+    from tensorflow.keras.layers import Flatten
+    
+    # Define flattening layer
+    flatten_layer = Flatten()
+    
+    # Apply flattening
+    flattened_output = flatten_layer(avg_pooled_output)
+    print("Shape after flattening:", flattened_output.shape)
+            </code></pre>
+        </ul>
+    
+        <h2 class="main-heading">Complete Code of CNN with TensorFlow</h2>
+        <pre><code>
+    import tensorflow as tf
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+    
+    # Define the CNN model
+    model = Sequential([
+        Conv2D(filters=32, kernel_size=(3, 3), activation='relu', input_shape=(28, 28, 1)),
+        MaxPooling2D(pool_size=(2, 2)),
+        Flatten(),
+        Dense(units=128, activation='relu'),
+        Dense(units=10, activation='softmax')  # Output layer for 10 classes
+    ])
+    
+    # Compile the model
+    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    
+    # Summary of the model
+    model.summary()
+    
+    # Example of training the model (using dummy data here)
+    # Replace this with actual dataset like MNIST for real use
+    import numpy as np
+    x_train = np.random.random((100, 28, 28, 1))  # 100 samples, 28x28 size, 1 channel
+    y_train = np.random.randint(0, 10, 100)  # 100 random labels for 10 classes
+    
+    # Train the model
+    model.fit(x_train, y_train, epochs=5, batch_size=32)
+        </code></pre>
+    
+        <p>The above code demonstrates a complete CNN pipeline with TensorFlow. It starts with defining the model, including convolutional, pooling, and fully connected layers. It then compiles and trains the model. Replace the dummy data with actual datasets like MNIST for real-world applications.</p>
+    </section>
+
+    <section id="tutorial6" class="mb-5">
+        <h2 class="main-heading">Recurrent Neural Network (RNN)</h2>
+        <p>A Recurrent Neural Network (RNN) is a type of neural network designed to process sequential data. Unlike traditional neural networks, RNNs have connections that allow information to persist, making them ideal for tasks involving sequences like time series, natural language processing, and speech recognition.</p>
+        
+        <ul>
+            <h2 class="main-heading">Parts of RNN</h2>
+    
+            <!-- Recurrent Layers -->
+            <li><h3> Recurrent Layers: </h3></li>
+            <p>Recurrent layers enable the network to retain information over time. They use mechanisms like feedback loops to process sequences. Below is an example using TensorFlow's SimpleRNN layer:</p>
+            <pre><code>
+        import tensorflow as tf
+        from tensorflow.keras.layers import SimpleRNN
+        import numpy as np
+    
+        # Sample input data (random for demonstration)
+        data = np.random.random((10, 5, 8))  # 10 samples, 5 timesteps, 8 features
+    
+        # Define a simple RNN layer
+        rnn_layer = SimpleRNN(units=16, activation='relu', return_sequences=True)
+    
+        # Apply the RNN layer
+        output = rnn_layer(data)
+        print("Shape after RNN layer:", output.shape)
+            </code></pre>
+    
+            <!-- LSTM and GRU -->
+            <li><h3>LSTM and GRU Layers:</h3></li>
+            <p>Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) are advanced types of RNN layers that handle the vanishing gradient problem and allow longer memory. Below is an example:</p>
+            <pre><code>
+        from tensorflow.keras.layers import LSTM, GRU
+    
+        # Define LSTM and GRU layers
+        lstm_layer = LSTM(units=32, return_sequences=True)
+        gru_layer = GRU(units=32, return_sequences=False)
+    
+        # Apply the layers
+        lstm_output = lstm_layer(data)
+        gru_output = gru_layer(data)
+    
+        print("Shape after LSTM layer:", lstm_output.shape)
+        print("Shape after GRU layer:", gru_output.shape)
+            </code></pre>
+    
+            <!-- Dense Layers -->
+            <li><h3> Dense Layers: </h3></li>
+            <p>Dense layers are fully connected layers that receive the output of the recurrent layers and make predictions. Here's an example:</p>
+            <pre><code>
+        from tensorflow.keras.layers import Dense
+    
+        # Define a dense layer
+        dense_layer = Dense(units=10, activation='softmax')
+    
+        # Apply dense layer
+        final_output = dense_layer(gru_output)
+        print("Shape after dense layer:", final_output.shape)
+            </code></pre>
+        </ul>
+    
+        <h2 class="main-heading">Complete Code of RNN with TensorFlow</h2>
+        <pre><code>
+        import tensorflow as tf
+        from tensorflow.keras.models import Sequential
+        from tensorflow.keras.layers import SimpleRNN, Dense
+    
+        # Define the RNN model
+        model = Sequential([
+            SimpleRNN(units=32, activation='relu', input_shape=(5, 8)),
+            Dense(units=10, activation='softmax')  # Output layer for 10 classes
+        ])
+    
+        # Compile the model
+        model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    
+        # Summary of the model
+        model.summary()
+    
+        # Example of training the model (using dummy data here)
+        # Replace this with actual dataset for real use
+        import numpy as np
+        x_train = np.random.random((100, 5, 8))  # 100 samples, 5 timesteps, 8 features
+        y_train = np.random.randint(0, 10, 100)  # 100 random labels for 10 classes
+    
+        # Train the model
+        model.fit(x_train, y_train, epochs=5, batch_size=16)
+        </code></pre>
+    
+        <p>The above code demonstrates a complete RNN pipeline with TensorFlow. It starts with defining the model, including recurrent and dense layers. It then compiles and trains the model. Replace the dummy data with actual datasets for real-world applications.</p>
+    </section>
+        
+</div>
+
+      
+  <footer class="text-center">
+    <p>27 Dec 2024 Rauf AI and ML</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
